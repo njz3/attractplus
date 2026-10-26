@@ -1791,6 +1791,7 @@ void FeMiscMenu::get_options( FeConfigContext &ctx )
 	std::vector<std::string> startup_modes = _( FeSettings::startupDispTokens );
 	std::string startup_mode = value_at( startup_modes, ctx.fe_settings.get_startup_mode() );
 	ctx.add_opt( Opt::LIST, _( "Startup Mode" ), startup_mode, _( "_help_misc_startup_mode" ) )->append_vlist( startup_modes );
+	ctx.add_opt( Opt::EDIT, _( "Autorun Game" ), ctx.fe_settings.get_info( FeSettings::Autorun ), _( "_help_misc_autorun" ) );
 
 	ctx.add_opt( Opt::TOGGLE, _( "Group Clones" ), ctx.fe_settings.get_info_bool( FeSettings::GroupClones ), _( "_help_misc_group_clones" ) );
 	ctx.add_opt( Opt::TOGGLE, _( "Game Stats" ), ctx.fe_settings.get_info_bool( FeSettings::TrackUsage ), _( "_help_misc_track_usage" ) );
@@ -1865,6 +1866,7 @@ bool FeMiscMenu::save( FeConfigContext &ctx )
 	ctx.fe_settings.set_info( FeSettings::WindowMode, FeSettings::windowModeTokens[ ctx.opt_list[i++].get_vindex() ] );
 #endif
 	ctx.fe_settings.set_info( FeSettings::StartupMode, FeSettings::startupTokens[ ctx.opt_list[i++].get_vindex() ] );
+	ctx.fe_settings.set_info( FeSettings::Autorun, ctx.opt_list[i++].get_value() );
 	ctx.fe_settings.set_info( FeSettings::GroupClones, ctx.opt_list[i++].get_bool() );
 	ctx.fe_settings.set_info( FeSettings::TrackUsage, ctx.opt_list[i++].get_bool() );
 	ctx.fe_settings.set_info( FeSettings::ConfirmFavourites, ctx.opt_list[i++].get_bool() );

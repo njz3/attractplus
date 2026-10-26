@@ -63,6 +63,7 @@ void process_args( int argc, char *argv[],
 			std::string &startup_display,
 			std::string &startup_filter,
 			std::string &startup_rom,
+			std::string &autorun,
 			std::string &log_file,
 			FeLogLevel &log_level,
 			bool &window_topmost,
@@ -77,6 +78,7 @@ int main(int argc, char *argv[])
 	std::string startup_display;
 	std::string startup_filter;
 	std::string startup_rom;
+	std::string startup_autorun;
 	int last_fullscreen_mode = FeSettings::WindowType::Fullscreen;
 	int last_window_mode = FeSettings::WindowType::Window;
 	int last_display_index = -1;
@@ -91,7 +93,7 @@ int main(int argc, char *argv[])
 #endif
 
 	nowide::args a( argc, argv );
-	process_args( argc, argv, config_path, process_console, startup_display, startup_filter, startup_rom, log_file, log_level, window_topmost, window_args );
+	process_args( argc, argv, config_path, process_console, startup_display, startup_filter, startup_rom, startup_autorun, log_file, log_level, window_topmost, window_args );
 
 	FeSettings feSettings( config_path );
 	feSettings.set_window_topmost( window_topmost );
@@ -626,7 +628,19 @@ int main(int argc, char *argv[])
 				c = FeInputMap::LAST_COMMAND;
 				feVM.clear_commands();
 
-				if ( initial_load && mode == FeSettings::LaunchLastGame )
+				// Autorun only on initial_load, the command line value overrides the configured one
+				// - The layout of the display holding the game gets loaded below
+				const std::string autorun = startup_autorun.empty()
+					? feSettings.get_info( FeSettings::Autorun ) : startup_autorun;
+
+				bool autorun_selected = initial_load && !autorun.empty()
+					&& feSettings.select_autorun( autorun );
+
+				if ( autorun_selected )
+				{
+					launch_game = true;
+				}
+				else if ( initial_load && mode == FeSettings::LaunchLastGame )
 				{
 					// Only LaunchLastGame on initial_load, not after manually triggered intro
 					has_layout = feSettings.select_last_launch( initial_load );
@@ -638,7 +652,7 @@ int main(int argc, char *argv[])
 					launch_game = true;
 				}
 
-				if ( mode == FeSettings::ShowDisplaysMenu )
+				if ( !autorun_selected && mode == FeSettings::ShowDisplaysMenu )
 				{
 					// Update command to show DisplaysMenu in the current loop
 					has_layout = feSettings.has_custom_displays_menu();

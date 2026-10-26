@@ -125,6 +125,7 @@ Sort Only;Nur sortieren
 Sort and Show;Sortieren und anzeigen
 Sound;Klänge
 Startup Mode;Startup Modus
+Autorun Game;Spiel automatisch starten
 Target;Ziel
 Title;Titel
 Game Stats;Spielstatistiken
@@ -504,6 +505,7 @@ _help_main_screensaver;Konfiguriere Bildschirmschoner
 _help_main_sound;Konfiguriere Klang-Lautstärke, Klang->Ereignis Zuordnungen und den Umgebungs-Soundtrack
 _help_misc_anisotropic_filtering;Legt den Grad der anisotropen Filterung für Texturen fest. Dies verbessert die Qualität skalierter Texturen.
 _help_misc_antialiasing;Kantenglättung einstellen
+_help_misc_autorun;Spiel, das beim Start von Attract-Mode Plus automatisch gestartet wird, im Format <Emulator>:<Rom> [z.B. "mame:sf2"]. Nach dem Beenden des Spiels wird das Frontend angezeigt. Leer lassen zum Deaktivieren
 _help_misc_check_for_updates;Konfiguriert, ob Attract-Mode Plus beim Start nach verfügbaren Updates suchen und bei Verfügbarkeit einer neuen Version eine Update-Benachrichtigung anzeigen soll.
 _help_misc_confirm_exit;Bestätigung vor Verlassen von Attract-Mode Plus verlangen?
 _help_misc_confirm_favs;Das Hinzufügen/Löschen zu den Favoriten bestätigen

@@ -125,6 +125,7 @@ Sort Only;並べ替えのみ
 Sort and Show;並べ替えと表示
 Sound;サウンド
 Startup Mode;起動モード
+Autorun Game;自動起動ゲーム
 Target;ルールのターゲット
 Title;タイトル(Title)
 Game Stats;ゲーム統計
@@ -504,6 +505,7 @@ _help_main_screensaver;スクリーンセーバーを設定します
 _help_main_sound;効果音, 背景音楽, ボリューム等を設定します
 _help_misc_anisotropic_filtering;テクスチャの異方性フィルタリングレベルを設定します。これにより、スケーリングされたテクスチャの品質が向上します
 _help_misc_antialiasing;アンチエイリアシングのレベルを設定します
+_help_misc_autorun;Attract-Mode Plus の起動時に自動的に起動するゲーム。<エミュレーター>:<ROM> の形式で指定 [例: "mame:sf2"]。ゲーム終了後はフロントエンドに戻ります。空欄で無効
 _help_misc_check_for_updates;Attract-Mode Plus が起動時に利用可能なアップデートをチェックし、新しいバージョンが見つかった場合にアップデート通知ダイアログを表示するかどうかを設定します
 _help_misc_confirm_exit;Attract-Mode Plusの終了を確認します
 _help_misc_confirm_favs;お気に入りのゲームを追加,削除する時, Yes/Noで確認するかを設定します

@@ -49,6 +49,7 @@ void process_args( int argc, char *argv[],
 			std::string &startup_display,
 			std::string &startup_filter,
 			std::string &startup_rom,
+			std::string &autorun,
 			std::string &log_file,
 			FeLogLevel &log_level,
 			bool &window_topmost,
@@ -311,6 +312,21 @@ void process_args( int argc, char *argv[],
 				next_arg++;
 			}
 		}
+		else if (( strcmp( argv[next_arg], "-a" ) == 0 )
+				|| ( strcmp( argv[next_arg], "--autorun" ) == 0 ))
+		{
+			next_arg++;
+			if ( next_arg < argc )
+			{
+				autorun = argv[next_arg];
+				next_arg++;
+			}
+			else
+			{
+				FeLog() << "Error, no game specified with --autorun option." << std::endl;
+				exit(1);
+			}
+		}
 		else if (( strcmp( argv[next_arg], "-w" ) == 0 )
 				|| ( strcmp( argv[next_arg], "--window" ) == 0 ))
 		{
@@ -373,6 +389,7 @@ void process_args( int argc, char *argv[],
 #endif
 			write_option( "-c, --config <dir>", "Set the directory containing attract.cfg" );
 			write_option( "-d, --display <display> [filter] [rom]", "Show the given Display, Filter, and Rom on startup" );
+			write_option( "-a, --autorun <emulator>:<rom>", "Launch the given game on startup, return to the frontend on exit" );
 			write_option( "-w, --window <x> <y> <w> <h>", "Set the position and size for window modes" );
 			write_option( "-t, --topmost", "Keep the window always on top" );
 			write_option( "-v, --version", "Show version information" );

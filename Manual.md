@@ -234,3 +234,15 @@ Alternatively, more verbose debug log messages can be enabled by running:
 ```sh
 attract --loglevel debug
 ```
+
+### Autorun
+
+Attract-Mode Plus can launch a game automatically on startup. When the game exits, the frontend is shown with that game selected, just as if it had been launched from the list. The game is given as `<emulator>:<rom>`, where `<emulator>` is the emulator name and `<rom>` is the rom name (the `Name` field of the romlist, not the title):
+
+```sh
+attract --autorun mame:sf2
+```
+
+The same value can be stored in `attract.cfg` (`autorun mame:sf2` in the `general` section), or set in config mode with Configure > Settings > `Autorun Game`. A value given on the command line overrides the configured one. Leave the setting blank to disable autorun.
+
+The game must be listed in a Display. The current Display and Filter are searched first, then the other Displays and Filters. If the game can't be found, Attract-Mode Plus logs an error and starts normally.

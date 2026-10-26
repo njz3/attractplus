@@ -125,6 +125,7 @@ Sort Only;정렬만
 Sort and Show;정렬 및 표시
 Sound;소리
 Startup Mode;시작 모드
+Autorun Game;자동 실행 게임
 Target;규칙의 대상
 Title;제목(Title)
 Game Stats;게임 통계
@@ -504,6 +505,7 @@ _help_main_screensaver;화면 보호기를 설정합니다
 _help_main_sound;효과음, 배경음악, 볼륨 조절 등을 설정합니다
 _help_misc_anisotropic_filtering;텍스처의 이방성 필터링 수준을 설정합니다. 이렇게 하면 크기 조정된 텍스처의 품질이 향상됩니다.
 _help_misc_antialiasing;앤티앨리어싱 수준을 설정합니다.
+_help_misc_autorun;Attract-Mode Plus 시작 시 자동으로 실행할 게임. <에뮬레이터>:<롬> 형식으로 지정 [예: "mame:sf2"]. 게임 종료 후 프론트엔드로 돌아갑니다. 비워 두면 사용 안 함
 _help_misc_check_for_updates;Attract-Mode Plus가 시작 시 사용 가능한 업데이트를 확인하고 새 버전이 발견되면 업데이트 알림 대화 상자를 표시할지 여부를 설정합니다.
 _help_misc_confirm_exit;프로그램을 정말로 종료할 것인지 묻습니다
 _help_misc_confirm_favs;즐겨하는 게임을 추가/삭제할 때에 사용자에게 Yes/No 로 물을 지 여부를 설정합니다

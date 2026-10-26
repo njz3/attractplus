@@ -144,6 +144,7 @@ public:
 		HideBrackets,
 		GroupClones,
 		StartupMode,
+		Autorun,
 		PrefixMode,
 		QuickMenu,
 		ConfirmFavourites,
@@ -200,6 +201,7 @@ private:
 	std::string m_exit_command;
 	std::string m_exit_message;
 	std::string m_exit_question;
+	std::string m_autorun; // game to launch on startup, as "<emulator>:<romname>"
 	std::string m_language;
 	std::string m_current_search_str;
 
@@ -443,6 +445,10 @@ public:
 
 	bool select_last_launch( bool initial_load = false );
 	bool is_last_launch( int filter_offset, int index_offset );
+
+	// Select the game given as "<emulator>:<romname>", searching the current
+	// display first and then the other displays.  Returns false if not found
+	bool select_autorun( const std::string &autorun );
 	int get_joy_thresh() const { return m_joy_thresh; }
 	void init_mouse_capture( sf::RenderWindow *window );
 	bool has_mouse_moves() const { return m_inputmap.has_mouse_moves(); }

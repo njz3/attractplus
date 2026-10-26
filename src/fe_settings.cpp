@@ -578,6 +578,7 @@ const char *FeSettings::configSettingStrings[] =
 	"hide_brackets",
 	"group_clones",
 	"startup_mode",
+	"autorun",
 	"prefix_mode",
 	"quick_menu",
 	"confirm_favourites",
@@ -2446,6 +2447,75 @@ bool FeSettings::is_last_launch( int filter_offset, int index_offset )
 		&& ( m_last_launch_rom == get_rom_index( m_last_launch_filter, index_offset ) ));
 }
 
+bool FeSettings::select_autorun( const std::string &autorun )
+{
+	size_t pos = autorun.find( ':' );
+	if (( pos == std::string::npos ) || ( pos == 0 ) || ( pos == autorun.size() - 1 ))
+	{
+		FeLog() << "Autorun: invalid value '" << autorun << "', expected <emulator>:<romname>" << std::endl;
+		return false;
+	}
+
+	const std::string emu_name = autorun.substr( 0, pos );
+	const std::string rom_name = autorun.substr( pos + 1 );
+
+	// Search the current display first, then the other displays
+	std::vector<int> displays;
+	if ( m_current_display >= 0 )
+		displays.push_back( m_current_display );
+
+	for ( int i=0; i<(int)m_displays.size(); i++ )
+		if ( i != m_current_display )
+			displays.push_back( i );
+
+	int original_display = m_current_display;
+	for ( int d : displays )
+	{
+		if ( d != m_current_display )
+			set_display( d );
+
+		// Search the current filter first, then the other filters
+		int current_filter = get_current_filter_index();
+		std::vector<int> filters( 1, current_filter );
+		for ( int f=0; f<std::max( m_displays[d].get_filter_count(), 1 ); f++ )
+			if ( f != current_filter )
+				filters.push_back( f );
+
+		for ( int f : filters )
+		{
+			for ( int i=0; i<m_rl.filter_size( f ); i++ )
+			{
+				// The group holds the clones when group_clones is on, otherwise just the rom
+				std::vector<FeRomInfo *> group;
+				m_rl.get_clone_group( f, i, group );
+
+				for ( int j=0; j<(int)group.size(); j++ )
+				{
+					if (( icompare( group[j]->get_info( FeRomInfo::Emulator ), emu_name ) != 0 )
+							|| ( icompare( group[j]->get_info( FeRomInfo::Romname ), rom_name ) != 0 ))
+						continue;
+
+					set_search_rule( "" );
+					set_current_selection( f, i );
+
+					if ( group.size() > 1 )
+						switch_to_clone_group( j );
+
+					FeLog() << "Autorun: '" << autorun << "' found in Display '"
+						<< m_displays[d].get_info( FeDisplayInfo::Name ) << "'" << std::endl;
+					return true;
+				}
+			}
+		}
+	}
+
+	if ( m_current_display != original_display )
+		set_display( original_display );
+
+	FeLog() << "Autorun: '" << autorun << "' not found in any Display" << std::endl;
+	return false;
+}
+
 bool FeSettings::get_current_fav()
 {
 	int filter_index = get_current_filter_index();
@@ -3470,6 +3540,8 @@ const std::string FeSettings::get_info( int index ) const
 		return m_exit_command;
 	case ExitMessage:
 		return m_exit_message;
+	case Autorun:
+		return m_autorun;
 	case UIFontSize:
 		if ( m_ui_font_size > 0 )
 			return as_str( m_ui_font_size );
@@ -3634,6 +3706,10 @@ bool FeSettings::set_info( int index, const std::string &value )
 	case ExitMessage:
 		m_exit_message = value;
 		m_exit_question = value + "?";
+		break;
+
+	case Autorun:
+		m_autorun = value;
 		break;
 
 	case UIFontSize:

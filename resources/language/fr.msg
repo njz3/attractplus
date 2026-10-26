@@ -125,6 +125,7 @@ Sort Only;Trier uniquement
 Sort and Show;Trier et afficher
 Sound;Son
 Startup Mode;Mode de démarrage
+Autorun Game;Jeu à lancer au démarrage
 Target;Cible
 Title;Titre
 Game Stats;Statistiques du jeu
@@ -504,6 +505,7 @@ _help_main_screensaver;Configurer l'économiseur d'écran
 _help_main_sound;Configurer le volume et les affectations sonores
 _help_misc_anisotropic_filtering;Définir le niveau de filtrage anisotrope des textures. Cela améliorera la qualité des textures mises à l'échelle.
 _help_misc_antialiasing;Définir le niveau d'anticrénelage
+_help_misc_autorun;Jeu à lancer automatiquement au démarrage d'Attract-Mode Plus, sous la forme <émulateur>:<rom> [exemple "mame:sf2"]. Le frontend s'affiche quand on quitte le jeu. Laisser vide pour désactiver
 _help_misc_check_for_updates;Configurer si Attract-Mode Plus doit rechercher les mises à jour disponibles au démarrage et afficher une notification de mise à jour lorsqu'une nouvelle version est disponible.
 _help_misc_confirm_exit;Confirm before exiting Attract-Mode Plus?
 _help_misc_confirm_favs;Confirmer l'addition/suppression des favoris

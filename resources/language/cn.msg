@@ -125,6 +125,7 @@ Sort Only;仅排序
 Sort and Show;排序并显示
 Sound;声音
 Startup Mode;启动模式
+Autorun Game;自动启动游戏
 Target;规则的目标
 Title;标题
 Game Stats;游戏统计数据
@@ -504,6 +505,7 @@ _help_main_screensaver;配置屏幕保护程序
 _help_main_sound;配置音量、声音事件映射和环境音效
 _help_misc_anisotropic_filtering;设置纹理的各向异性过滤级别。这将提高缩放纹理的质量
 _help_misc_antialiasing;设置抗锯齿级别。
+_help_misc_autorun;Attract-Mode Plus 启动时自动运行的游戏，格式为 <模拟器>:<ROM> [例如 "mame:sf2"]。退出游戏后返回前端。留空则禁用
 _help_misc_check_for_updates;配置 Attract-Mode Plus 是否应在启动时检查可用更新, 并在发现新版本时显示更新通知对话框。
 _help_misc_confirm_exit;退出“吸引模式加强版”前请确认?
 _help_misc_confirm_favs;确认添加/删除收藏夹?
