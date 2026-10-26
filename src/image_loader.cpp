@@ -339,9 +339,9 @@ void run_thread()
 			int ignored;
 			// Load image pixel data
 			stbi_io_callbacks cb;
-			cb.read = reinterpret_cast<int(*)( void*, char*, int )>( &read );
+			cb.read = &read;
 			cb.skip = &skip;
-			cb.eof = reinterpret_cast<int(*)( void* )>( &eof );
+			cb.eof = &eof;
 
 			int temp_width, temp_height;
 			unsigned char *data = stbi_load_from_callbacks( &cb, e.second->m_stream, &temp_width, &temp_height, &ignored, STBI_rgb_alpha );
@@ -573,9 +573,9 @@ bool FeImageLoader::internal_load_image( const std::string &key, sf::InputStream
 
 	// load image dimensions now
 	stbi_io_callbacks cb;
-	cb.read = reinterpret_cast<int(*)( void*, char*, int )>( &read );
+	cb.read = &read;
 	cb.skip = &skip;
-	cb.eof = reinterpret_cast<int(*)( void* )>( &eof );
+	cb.eof = &eof;
 
 	int retval=false;
 	int ignored;

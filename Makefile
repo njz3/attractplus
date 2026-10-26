@@ -319,7 +319,7 @@ ifneq ($(FE_WINDOWS_COMPILE),1)
 else
  LIBS += -lopengl32 -lgdi32
  LIBS += -L$(EXTLIBS_DIR)/openal-soft
- LIBS += -lopengl32 -lFLAC -lvorbisfile -lopenal32-s -lwinmm
+ LIBS += -lopengl32 -lFLAC -lvorbisfile -lvorbisenc -lvorbis -logg -lopenal32-s -lwinmm
 endif
 
 
