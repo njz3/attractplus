@@ -114,6 +114,8 @@ Scraper;Scraper
 ScreenScraper Username;ScreenScraper Benutzername
 ScreenScraper Password;ScreenScraper Passwort
 Screen Rotation;Bildschirmdrehung
+Aspect Ratio;Seitenverhältnis
+Original;Original
 Screen Saver Timeout;Timeout des Bildschirmschoners
 Selection Speed;Auswahlgeschwindigkeit
 Selection Delay;Auswahlverzögerung
@@ -505,6 +507,7 @@ _help_main_screensaver;Konfiguriere Bildschirmschoner
 _help_main_sound;Konfiguriere Klang-Lautstärke, Klang->Ereignis Zuordnungen und den Umgebungs-Soundtrack
 _help_misc_anisotropic_filtering;Legt den Grad der anisotropen Filterung für Texturen fest. Dies verbessert die Qualität skalierter Texturen.
 _help_misc_antialiasing;Kantenglättung einstellen
+_help_misc_aspect_ratio;Form des Rahmens, in dem das Frontend gezeichnet und über den ganzen Bildschirm gestreckt wird. 4:3 oder 16:9 für Modi mit nicht quadratischen Pixeln, z.B. CRT-Superauflösungen (1920x240 als 4:3 angezeigt). Original: quadratische Pixel, die Form der Bildschirmauflösung
 _help_misc_autorun;Spiel, das beim Start von Attract-Mode Plus automatisch gestartet wird, im Format <Emulator>:<Rom> [z.B. "mame:sf2"]. Nach dem Beenden des Spiels wird das Frontend angezeigt. Leer lassen zum Deaktivieren
 _help_misc_check_for_updates;Konfiguriert, ob Attract-Mode Plus beim Start nach verfügbaren Updates suchen und bei Verfügbarkeit einer neuen Version eine Update-Benachrichtigung anzeigen soll.
 _help_misc_confirm_exit;Bestätigung vor Verlassen von Attract-Mode Plus verlangen?

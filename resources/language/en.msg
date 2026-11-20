@@ -114,6 +114,8 @@ Scraper;Scraper
 ScreenScraper Username;ScreenScraper Username
 ScreenScraper Password;ScreenScraper Password
 Screen Rotation;Screen Rotation
+Aspect Ratio;Aspect Ratio
+Original;Original
 Screen Saver Timeout;Screen Saver Timeout
 Selection Speed;Selection Speed
 Selection Delay;Selection Delay
@@ -505,6 +507,7 @@ _help_main_screensaver;Configure screen saver
 _help_main_sound;Configure sound volumes, sound event mappings and the ambient soundtrack
 _help_misc_anisotropic_filtering;Set the anisotropic filtering level for textures. This will improve the quality of scaled textures
 _help_misc_antialiasing;Set the anti-aliasing level
+_help_misc_aspect_ratio;Shape of the frame the frontend is drawn in, stretched over the whole screen. Use 4:3 or 16:9 for modes whose pixels aren't square, such as CRT super resolutions (1920x240 shown as 4:3). Original: square pixels, the shape of the screen resolution
 _help_misc_autorun;Game to launch automatically when Attract-Mode Plus starts, as <emulator>:<rom> [i.e. "mame:sf2"]. The frontend is shown when the game exits. Leave blank to disable
 _help_misc_check_for_updates;Configure whether Attract-Mode Plus should check for available updates on startup and display an update notification dialog when a new version is found.
 _help_misc_confirm_exit;Confirm the exiting of Attract-Mode Plus

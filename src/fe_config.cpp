@@ -1830,6 +1830,10 @@ void FeMiscMenu::get_options( FeConfigContext &ctx )
 	std::string rot_mode = value_at( rot_modes, ctx.fe_settings.get_screen_rotation() );
 	ctx.add_opt( Opt::LIST, _( "Screen Rotation" ), rot_mode, _( "_help_misc_screen_rotation" ) )->append_vlist( rot_modes );
 
+	std::vector<std::string> aspect_modes = _( FeSettings::aspectRatioDispTokens );
+	std::string aspect_mode = value_at( aspect_modes, ctx.fe_settings.get_aspect_ratio() );
+	ctx.add_opt( Opt::LIST, _( "Aspect Ratio" ), aspect_mode, _( "_help_misc_aspect_ratio" ) )->append_vlist( aspect_modes );
+
 	ctx.add_opt( Opt::EDIT, _( "Image Cache Size" ), ctx.fe_settings.get_info( FeSettings::ImageCacheMBytes ), _( "_help_misc_image_cache_mbytes" ) );
 	std::vector<std::string> decoders;
 	std::string vid_dec;
@@ -1882,6 +1886,7 @@ bool FeMiscMenu::save( FeConfigContext &ctx )
 	ctx.fe_settings.set_info( FeSettings::MultiMon, ctx.opt_list[i++].get_bool() );
 #endif
 	ctx.fe_settings.set_info( FeSettings::ScreenRotation, FeSettings::screenRotationTokens[ ctx.opt_list[i++].get_vindex() ] );
+	ctx.fe_settings.set_info( FeSettings::AspectRatio, FeSettings::aspectRatioTokens[ ctx.opt_list[i++].get_vindex() ] );
 	ctx.fe_settings.set_info( FeSettings::ImageCacheMBytes, ctx.opt_list[i++].get_value() );
 	ctx.fe_settings.set_info( FeSettings::VideoDecoder, ctx.opt_list[i++].get_value() );
 	ctx.fe_settings.set_info( FeSettings::QuickMenu, ctx.opt_list[i++].get_bool() );

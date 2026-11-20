@@ -11,6 +11,7 @@
    -  [Sound](#sound)
    -  [Artwork](#artwork)
    -  [Layouts](#layouts)
+   -  [Aspect Ratio](#aspect-ratio)
    -  [Plugins](#plugins)
    -  [Romlists](#romlists)
 -  [Romlist Generation](#romlist-generation)
@@ -170,6 +171,17 @@ Attract-Mode Plus can also display layouts made for other frontends, including `
 
 -  `MaLa` - Copy the layout and related resources into a new subdirectory of the `layouts` directory, or place a `zip`, `7z` or `rar` file containing these things into the `layouts` directory. After doing this, you hould be able to select the layout when configuring a Display in Attract-Mode Plus, just as you would for a native layout.
 -  `Hyperspin` - Copy the Hyperspin `Media` directory into its own directory in the Attract-Mode Plus layouts directory. Create a Display in Attract-Mode Plus and configure the layout to be the directory you copied `Media` into. The Display's name needs to match the name of one of the system subdirectories in the Hyperspin `Media` directory. This will allow Attract-Mode Plus to find the Hyperspin themes and graphics to use. So for example, naming the Display `MAME` will cause it to match Hyperspin's `MAME/Themes/_` for themes, `MAME/Images/Artwork1/_` for artwork1, etc. Note that the wheel images are located using the built-in wheel artwork. Wheel images located in the Hyperspin directories are ignored.
+
+### Aspect Ratio
+
+By default Attract-Mode Plus draws with square pixels, so the layout takes the shape of the screen resolution. Some display modes have pixels that aren't square, such as the CRT super resolutions (`1920x240`, `1280x240`, `1024x384`, `1280x480`) that the screen shows as 4:3. In those modes the layout would look squeezed.
+
+Configure > Settings > `Aspect Ratio` (`aspect_ratio` in the `general` section of `attract.cfg`) sets the shape of the frame Attract-Mode Plus draws in:
+
+-  `original` - Square pixels, the shape of the screen resolution (the default).
+-  `4:3` or `16:9` - The frontend is drawn in a frame of that shape, as high as the screen (`320x240` for `1920x240` in 4:3), and the frame is stretched over the whole screen. Layouts, menus, videos and the mouse all follow the stretch. A layout shows its content in the frame as it would on a screen of that shape, with its own bars if the shapes differ.
+
+Layouts see the frame size as the screen size (`fe.layout.width`, `fe.layout.height`, `ScreenWidth`, `ScreenHeight` and `fe.monitors[0]`). Only the first monitor is affected.
 
 ### Plugins
 

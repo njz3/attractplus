@@ -477,6 +477,32 @@ void FePresent::init_monitors()
 
 	ASSERT( m_mon.size() > 0 );
 
+	//
+	// Draw the first monitor in a frame of the configured aspect ratio, as high as the screen,
+	// stretched over its whole width.  For modes whose pixels aren't square, such as CRT super
+	// resolutions (1920x240 shown as 4:3): the frontend is drawn in 320x240 and stretched.
+	//
+	float aspect_ratio = m_feSettings->get_aspect_ratio_value();
+	if ( aspect_ratio > 0.0f )
+	{
+		sf::Vector2i screen_size = m_mon[0].size;
+		sf::Vector2i frame_size( std::max( 1, static_cast<int>( screen_size.y * aspect_ratio + 0.5f )), screen_size.y );
+
+		m_mon[0].transform.scale({ static_cast<float>( screen_size.x ) / frame_size.x, 1.0f });
+		m_mon[0].size = frame_size;
+
+		// init_monitors() runs for every layout load, only log changes
+		static sf::Vector2i logged_frame, logged_screen;
+		if (( frame_size != logged_frame ) || ( screen_size != logged_screen ))
+		{
+			FeLog() << "Aspect ratio " << m_feSettings->get_info( FeSettings::AspectRatio )
+				<< ": drawing in " << frame_size.x << "x" << frame_size.y
+				<< ", stretched to " << screen_size.x << "x" << screen_size.y << std::endl;
+			logged_frame = frame_size;
+			logged_screen = screen_size;
+		}
+	}
+
 	m_layoutSize = m_mon[0].size;
 
 	if ( m_refresh_rate == 0 )
@@ -642,11 +668,13 @@ void FePresent::draw( sf::RenderTarget& target, sf::RenderStates states ) const
 	{
 		if ( m_layout_crop )
 		{
+			// The monitor transform may stretch (see aspect ratio in init_monitors)
 			sf::Vector2f monitor_pos = m_mon[i].transform.transformPoint({ 0, 0 });
+			sf::Vector2f monitor_end = m_mon[i].transform.transformPoint( sf::Vector2f( m_mon[i].size ));
 			float monitor_left = monitor_pos.x;
 			float monitor_top = monitor_pos.y;
-			float monitor_right = monitor_pos.x + m_mon[i].size.x;
-			float monitor_bottom = monitor_pos.y + m_mon[i].size.y;
+			float monitor_right = monitor_end.x;
+			float monitor_bottom = monitor_end.y;
 
 			float clip_left = monitor_left;
 			float clip_top = monitor_top;

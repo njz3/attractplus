@@ -114,6 +114,8 @@ Scraper;스크래퍼
 ScreenScraper Username;ScreenScraper 사용자 이름
 ScreenScraper Password;ScreenScraper 비밀번호
 Screen Rotation;화면 회전
+Aspect Ratio;화면 비율
+Original;원본
 Screen Saver Timeout;화면 보호기 타임아웃 시간
 Selection Speed;선택 속도
 Selection Delay;선택 지연
@@ -505,6 +507,7 @@ _help_main_screensaver;화면 보호기를 설정합니다
 _help_main_sound;효과음, 배경음악, 볼륨 조절 등을 설정합니다
 _help_misc_anisotropic_filtering;텍스처의 이방성 필터링 수준을 설정합니다. 이렇게 하면 크기 조정된 텍스처의 품질이 향상됩니다.
 _help_misc_antialiasing;앤티앨리어싱 수준을 설정합니다.
+_help_misc_aspect_ratio;프론트엔드를 그리는 프레임의 비율로, 화면 전체로 늘려집니다. CRT 슈퍼 해상도(4:3으로 표시되는 1920x240)처럼 픽셀이 정사각형이 아닌 모드에서는 4:3 또는 16:9를 사용합니다. 원본: 정사각형 픽셀, 화면 해상도의 비율
 _help_misc_autorun;Attract-Mode Plus 시작 시 자동으로 실행할 게임. <에뮬레이터>:<롬> 형식으로 지정 [예: "mame:sf2"]. 게임 종료 후 프론트엔드로 돌아갑니다. 비워 두면 사용 안 함
 _help_misc_check_for_updates;Attract-Mode Plus가 시작 시 사용 가능한 업데이트를 확인하고 새 버전이 발견되면 업데이트 알림 대화 상자를 표시할지 여부를 설정합니다.
 _help_misc_confirm_exit;프로그램을 정말로 종료할 것인지 묻습니다

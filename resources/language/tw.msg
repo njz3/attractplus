@@ -114,6 +114,8 @@ Scraper;刮擦器
 ScreenScraper Username;ScreenScraper 使用者名稱
 ScreenScraper Password;ScreenScraper 密碼
 Screen Rotation;螢幕旋轉
+Aspect Ratio;長寬比
+Original;原始
 Screen Saver Timeout;螢幕保護啟動時間
 Selection Speed;選擇速度
 Selection Delay;選擇延遲
@@ -505,6 +507,7 @@ _help_main_screensaver;設定螢幕保護
 _help_main_sound;設定聲音音量、操作事件聲音對映及環境音效
 _help_misc_anisotropic_filtering;設定紋理的各向異性過濾等級。這將提高縮放紋理的品質。
 _help_misc_antialiasing;設定抗鋸齒級別
+_help_misc_aspect_ratio;繪製前端的畫框比例，延展至整個螢幕。像素非正方形的模式（如以4:3顯示的1920x240 CRT超解析度）請使用4:3或16:9。原始：正方形像素，即螢幕解析度的比例
 _help_misc_autorun;Attract-Mode Plus 啟動時自動執行的遊戲，格式為 <模擬器>:<ROM> [例如 "mame:sf2"]。結束遊戲後返回前端。留空則停用
 _help_misc_check_for_updates;設定 Attract-Mode Plus 是否應在啟動時檢查可用更新,並在發現新版本時顯示更新通知對話方塊。
 _help_misc_confirm_exit;結束 Attract-Mode Plus 前先確認?

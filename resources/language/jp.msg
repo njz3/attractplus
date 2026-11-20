@@ -114,6 +114,8 @@ Scraper;スクレーパー
 ScreenScraper Username;ScreenScraper ユーザー名
 ScreenScraper Password;ScreenScraper パスワード
 Screen Rotation;画面の回転
+Aspect Ratio;アスペクト比
+Original;オリジナル
 Screen Saver Timeout;スクリーンセーバーのタイムアウト時間
 Selection Speed;選択速度
 Selection Delay;選択の遅延
@@ -505,6 +507,7 @@ _help_main_screensaver;スクリーンセーバーを設定します
 _help_main_sound;効果音, 背景音楽, ボリューム等を設定します
 _help_misc_anisotropic_filtering;テクスチャの異方性フィルタリングレベルを設定します。これにより、スケーリングされたテクスチャの品質が向上します
 _help_misc_antialiasing;アンチエイリアシングのレベルを設定します
+_help_misc_aspect_ratio;フロントエンドを描画する枠の形で、画面全体に引き伸ばされます。CRTのスーパー解像度（4:3で表示される1920x240）など、ピクセルが正方形でないモードでは4:3または16:9を使用します。オリジナル：正方形ピクセル、画面解像度の形
 _help_misc_autorun;Attract-Mode Plus の起動時に自動的に起動するゲーム。<エミュレーター>:<ROM> の形式で指定 [例: "mame:sf2"]。ゲーム終了後はフロントエンドに戻ります。空欄で無効
 _help_misc_check_for_updates;Attract-Mode Plus が起動時に利用可能なアップデートをチェックし、新しいバージョンが見つかった場合にアップデート通知ダイアログを表示するかどうかを設定します
 _help_misc_confirm_exit;Attract-Mode Plusの終了を確認します

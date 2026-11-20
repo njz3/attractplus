@@ -215,6 +215,22 @@ const char *FeSettings::screenRotationDispTokens[] =
 	NULL
 };
 
+const char *FeSettings::aspectRatioTokens[] =
+{
+	"original",
+	"4:3",
+	"16:9",
+	NULL
+};
+
+const char *FeSettings::aspectRatioDispTokens[] =
+{
+	"Original", // Default
+	"4:3",
+	"16:9",
+	NULL
+};
+
 const char *FeSettings::antialiasingTokens[] =
 {
 	"0",
@@ -413,6 +429,7 @@ FeSettings::FeSettings( const std::string &config_path ):
 	m_power_saving( false ),
 	m_check_for_updates( true ),
 	m_screen_rotation( RotateNone ),
+	m_aspect_ratio( AspectOriginal ),
 	m_antialiasing( 0 ),
 	m_anisotropic( 0 ),
 	m_loaded_game_extras( false ),
@@ -587,6 +604,7 @@ const char *FeSettings::configSettingStrings[] =
 	"joystick_threshold",
 	"window_mode",
 	"screen_rotation",
+	"aspect_ratio",
 	"anti_aliasing",
 	"anisotropic",
 	"filter_wrap_mode",
@@ -713,6 +731,10 @@ int FeSettings::process_setting( const std::string &setting,
 
 						case ScreenRotation:
 							valid = screenRotationTokens;
+							break;
+
+						case AspectRatio:
+							valid = aspectRatioTokens;
 							break;
 
 						case FilterWrapMode:
@@ -3470,6 +3492,21 @@ FeSettings::RotationState FeSettings::get_screen_rotation() const
 	return m_screen_rotation;
 }
 
+FeSettings::AspectRatioType FeSettings::get_aspect_ratio() const
+{
+	return m_aspect_ratio;
+}
+
+float FeSettings::get_aspect_ratio_value() const
+{
+	switch ( m_aspect_ratio )
+	{
+		case Aspect4_3: return 4.0f / 3.0f;
+		case Aspect16_9: return 16.0f / 9.0f;
+		default: return 0.0f;
+	}
+}
+
 int FeSettings::get_antialiasing() const
 {
 	return m_antialiasing;
@@ -3556,6 +3593,8 @@ const std::string FeSettings::get_info( int index ) const
 		return windowModeTokens[ m_window_mode ];
 	case ScreenRotation:
 		return screenRotationTokens[ m_screen_rotation ];
+	case AspectRatio:
+		return aspectRatioTokens[ m_aspect_ratio ];
 	case AntiAliasing:
 		return as_str( m_antialiasing );
 	case Anisotropic:
@@ -3797,6 +3836,14 @@ bool FeSettings::set_info( int index, const std::string &value )
 			int i = get_token_index( screenRotationTokens, value );
 			if (i == -1) return false;
 			m_screen_rotation = (RotationState)i;
+		}
+		break;
+
+	case AspectRatio:
+		{
+			int i = get_token_index( aspectRatioTokens, value );
+			if (i == -1) return false;
+			m_aspect_ratio = (AspectRatioType)i;
 		}
 		break;
 

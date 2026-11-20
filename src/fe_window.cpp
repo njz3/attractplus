@@ -843,5 +843,25 @@ void FeWindow::draw( const sf::Drawable &d, const sf::RenderStates &r )
 
 const std::optional<sf::Event> FeWindow::pollEvent()
 {
+#if defined(SFML_SYSTEM_WINDOWS)
+	//
+	// The blackout window can get the close request meant for us: WM_CLOSE sent to the
+	// process' first visible window (CloseMainWindow, taskkill), or Alt+F4 while it has
+	// the focus.  Its events were never read, so the frontend ignored them.  Pass its
+	// close request on and drop its other events.
+	//
+	if ( m_blackout.isOpen() )
+	{
+		while ( const std::optional ev = m_blackout.pollEvent() )
+		{
+			if ( ev->is<sf::Event::Closed>() )
+			{
+				FeLog() << "Close request received by the blackout window" << std::endl;
+				return ev;
+			}
+		}
+	}
+#endif
+
 	return m_window->pollEvent();
 }

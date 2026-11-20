@@ -98,6 +98,13 @@ public:
 	enum RotationState { RotateNone=0, RotateRight, RotateFlip, RotateLeft };
 	static const char *screenRotationTokens[];
 	static const char *screenRotationDispTokens[];
+
+	// Shape of the frame the frontend is drawn in, stretched over the whole screen
+	// (for modes whose pixels aren't square, such as CRT super resolutions)
+	enum AspectRatioType { AspectOriginal=0, Aspect4_3, Aspect16_9 };
+	static const char *aspectRatioTokens[];
+	static const char *aspectRatioDispTokens[];
+
 	static const char *antialiasingTokens[];
 	static const char *antialiasingDispTokens[];
 	static const char *anisotropicTokens[];
@@ -153,6 +160,7 @@ public:
 		JoystickThreshold,
 		WindowMode,
 		ScreenRotation,
+		AspectRatio,
 		AntiAliasing,
 		Anisotropic,
 		FilterWrapMode,
@@ -292,6 +300,7 @@ private:
 	bool m_power_saving;
 	bool m_check_for_updates;
 	RotationState m_screen_rotation;
+	AspectRatioType m_aspect_ratio;
 	int m_antialiasing;
 	int m_anisotropic;
 	bool m_loaded_game_extras;
@@ -571,6 +580,11 @@ public:
 	bool get_multimon() const;
 	WindowType get_window_mode() const;
 	RotationState get_screen_rotation() const;
+	AspectRatioType get_aspect_ratio() const;
+
+	// Width/height of the configured frame, 0 for AspectOriginal
+	float get_aspect_ratio_value() const;
+
 	int get_antialiasing() const;
 	int get_anisotropic() const;
 	FilterWrapModeType get_filter_wrap_mode() const;
